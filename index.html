@@ -3,161 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Chirurgia Oftalmica</title>
+    <title>Quiz Chirurgia</title>
 
     <style>
         body {
-            margin: 0;
-            padding: 20px;
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            padding: 20px;
+            background: #f0f0f0;
         }
 
-        .question-block {
+        .question-container {
+            display: none;
             background: white;
             padding: 20px;
-            margin-bottom: 40px;
-            border-radius: 12px;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-
-        iframe {
-            width: 100%;
-            height: 420px;
-            border: none;
             border-radius: 10px;
+            max-width: 800px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.15);
         }
 
-        h2 {
-            text-align: center;
-        }
-
-        .options {
-            margin-top: 15px;
-            font-size: 18px;
-        }
-
-            .options label {
+            .question-container.active {
                 display: block;
-                margin-bottom: 5px;
-                cursor: pointer;
             }
 
-        .btn-check {
-            display: block;
-            margin: 30px auto;
-            padding: 12px 25px;
-            font-size: 18px;
+        iframe, img {
+            width: 100%;
+            max-width: 700px;
+            height: 400px;
+            border: none;
+            margin-bottom: 15px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 16px;
             border: none;
             background: #007bff;
             color: white;
-            border-radius: 8px;
+            border-radius: 6px;
             cursor: pointer;
         }
 
-        .result {
+        /* Dashboard */
+        #result {
             text-align: center;
-            font-size: 22px;
+        }
+
+        #scoreBox {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
             margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.15);
+            text-align: left;
+        }
+
+        .correct {
+            color: green;
+            font-weight: bold;
+        }
+
+        .wrong {
+            color: red;
             font-weight: bold;
         }
     </style>
 </head>
-
 <body>
 
-    <h1 style="text-align:center;">Quiz – Riconoscimento interventi chirurgici oftalmici</h1>
+    <h2>Quiz di Chirurgia</h2>
 
-    <!-- 1) Cataract Surgery Animation -->
-    <div class="question-block">
-        <h2>Domanda 1</h2>
+    <!-- =================== DOMANDA 1 =================== -->
+    <div class="question-container active" id="q1">
+        <h3>1) Che intervento è rappresentato in questo video 3D?</h3>
 
-        <iframe title="Cataract Surgery Animation"
-                allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"
-                allow="autoplay; fullscreen; xr-spatial-tracking"
-                xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share
-                src="https://sketchfab.com/models/375ec3c07a0f42108da9334b6f9c1f85/embed">
-        </iframe>
+        <div class="sketchfab-embed-wrapper">
+            <iframe title="Cataract Surgery Animation"
+                    allowfullscreen
+                    src="https://sketchfab.com/models/375ec3c07a0f42108da9334b6f9c1f85/embed?autostart=1">
+            </iframe>
 
-        <div class="options">
-            <strong>Di quale intervento si tratta?</strong><br><br>
-            <label><input type="checkbox" name="q1" value="cataratta"> Chirurgia della cataratta</label>
-            <label><input type="checkbox" name="q1" value="vitrectomia"> Vitrectomia</label>
-            <label><input type="checkbox" name="q1" value="trapianto"> Trapianto di cornea</label>
-            <label><input type="checkbox" name="q1" value="laser"> Trattamento laser retina</label>
         </div>
+
+        <label><input type="checkbox" value="Vitrectomia" name="q1"> Vitrectomia</label><br>
+        <label><input type="checkbox" value="Facoemulsificazione" name="q1"> Facoemulsificazione</label><br>
+        <label><input type="checkbox" value="Trapianto di cornea" name="q1"> Trapianto di cornea</label><br>
+        <label><input type="checkbox" value="Chirurgia refrattiva" name="q1"> Chirurgia refrattiva</label>
+
+        <br><button onclick="nextQuestion(1)">Continua</button>
     </div>
 
-    <!-- 2) Vitrectomy - Step 1 -->
-    <div class="question-block">
-        <h2>Domanda 2</h2>
+    <!-- =================== DOMANDA 2 =================== -->
+    <div class="question-container" id="q2">
+        <h3>2) Che intervento è rappresentato in questa Immagine?</h3>
 
-        <iframe title="Vitrectomy - Step 1"
-                allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"
-                allow="autoplay; fullscreen; xr-spatial-tracking"
-                xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share
-                src="https://sketchfab.com/models/1d88716a182c40c6aa6d387cbb48f37a/embed">
-        </iframe>
-
-        <div class="options">
-            <strong>Di quale intervento si tratta?</strong><br><br>
-            <label><input type="checkbox" name="q2" value="vitrectomia"> Vitrectomia</label>
-            <label><input type="checkbox" name="q2" value="cataratta"> Chirurgia della cataratta</label>
-            <label><input type="checkbox" name="q2" value="crosslinking"> Cross-linking corneale</label>
-            <label><input type="checkbox" name="q2" value="trabeculectomia"> Trabeculectomia</label>
+        <div class="sketchfab-embed-wrapper">
+            <iframe title="Vitrectomy - Step 1"
+                    allowfullscreen
+                    src="https://sketchfab.com/models/1d88716a182c40c6aa6d387cbb48f37a/embed">
+            </iframe>
         </div>
-    </div>
-    <!-- 3) Strumentario chirurgico -->
-    <div class="question-block">
-        <h2>Domanda 3</h2>
 
-        <img src="Facoservitore.png" alt="Strumentario Faco"
-             style="width:100%; border-radius:10px; margin-bottom:15px;">
+        <label><input type="checkbox" value="Vitrectomia" name="q2"> Vitrectomia</label><br>
+        <label><input type="checkbox" value="Facoemulsificazione" name="q2"> Facoemulsificazione</label><br>
+        <label><input type="checkbox" value="Trabeculectomia" name="q2"> Trabeculectomia</label><br>
+        <label><input type="checkbox" value="IOL secondaria" name="q2"> Impianto IOL secondaria</label>
 
-        <div class="options">
-            <strong>Lo strumentario in questione a quale intervento si riferisce?</strong><br><br>
-
-            <label><input type="checkbox" name="q3" value="faco"> Facoemulsificazione</label>
-            <label><input type="checkbox" name="q3" value="vitrectomia"> Vitrectomia</label>
-            <label><input type="checkbox" name="q3" value="trapianto"> Trapianto di cornea</label>
-            <label><input type="checkbox" name="q3" value="laser"> Laser retinico</label>
-        </div>
+        <br><button onclick="nextQuestion(2)">Continua</button>
     </div>
 
-    <!-- Pulsante -->
-    <button class="btn-check" onclick="checkQuiz()">Verifica Risposte</button>
+    <!-- =================== DOMANDA 3 (IMMAGINE) =================== -->
+    <div class="question-container" id="q3">
+        <h3>3) Lo strumentario in questione a quale intervento si riferisce?</h3>
 
-    <div id="result" class="result"></div>
+        <img src="Facoservitore.png" alt="Strumentario Faco">
 
-    <script>function checkQuiz() {
+        <label><input type="checkbox" value="Vitrectomia" name="q3"> Vitrectomia</label><br>
+        <label><input type="checkbox" value="Cheratoplastica" name="q3"> Cheratoplastica</label><br>
+        <label><input type="checkbox" value="Facoemulsificazione" name="q3"> Facoemulsificazione</label><br>
+        <label><input type="checkbox" value="Valvola Ahmed" name="q3"> Impianto valvola di Ahmed</label>
+
+        <br><button onclick="finishQuiz()">Termina Quiz</button>
+    </div>
+
+    <!-- =================== DASHBOARD FINALE =================== -->
+    <div class="question-container" id="result">
+        <h3>Quiz completato!</h3>
+        <h2 id="finalScore"></h2>
+
+        <div id="scoreBox"></div>
+    </div>
+
+    <script>const correctAnswers = {
+            q1: "Facoemulsificazione",
+            q2: "Vitrectomia",
+            q3: "Facoemulsificazione"
+        };
+
+        const userAnswers = {};
+
+        function nextQuestion(n) {
+            saveAnswer(n);
+            document.getElementById("q" + n).classList.remove("active");
+            document.getElementById("q" + (n + 1)).classList.add("active");
+        }
+
+        function saveAnswer(n) {
+            const selected = document.querySelector('input[name="q' + n + '"]:checked');
+            userAnswers["q" + n] = selected ? selected.value : "Nessuna risposta";
+        }
+
+        function finishQuiz() {
+            saveAnswer(3);
+
+            document.getElementById("q3").classList.remove("active");
+            document.getElementById("result").classList.add("active");
+
             let score = 0;
+            let total = 3;
 
-            // Risposte corrette
-            const answers = {
-                q1: "cataratta",
-                q2: "vitrectomia",
-                q3: "faco"
-            };
+            let resultsHTML = "";
 
-            // Verifica Domanda 1
-            const q1 = document.querySelector('input[name="q1"]:checked');
-            if (q1 && q1.value === answers.q1) score++;
+            for (let q in correctAnswers) {
+                const user = userAnswers[q];
+                const correct = correctAnswers[q];
 
-            // Verifica Domanda 2
-            const q2 = document.querySelector('input[name="q2"]:checked');
-            if (q2 && q2.value === answers.q2) score++;
+                if (user === correct) score++;
 
-            // Verifica Domanda 3
-            const q3 = document.querySelector('input[name="q3"]:checked');
-            if (q3 && q3.value === answers.q3) score++;
+                resultsHTML += `
+                <p>
+                    <strong>${q.toUpperCase()}:</strong>
+                    <span class="${user === correct ? 'correct' : 'wrong'}">
+                        ${user === correct ? "✔ Corretto" : "✘ Errato"}
+                    </span><br>
+                    <small>Risposta data: ${user}</small><br>
+                    <small>Risposta corretta: ${correct}</small>
+                </p>
+                <hr>
+            `;
+            }
 
-            document.getElementById("result").innerHTML =
-                `Hai ottenuto <strong>${score}/3</strong> risposte corrette.`;
+            document.getElementById("finalScore").innerText =
+                `Punteggio: ${score} / ${total}`;
+
+            document.getElementById("scoreBox").innerHTML = resultsHTML;
         }</script>
-
 
 </body>
 </html>
